@@ -1,0 +1,116 @@
+/* General */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffcccc; /* Fondo rojo bajito */
+    overflow: hidden;
+    height: 100vh;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Caja de regalo */
+  #gift-container {
+    text-align: center;
+  }
+  
+  #gift {
+    width: 450px;
+    cursor: pointer;
+    animation: bounce 1s infinite;
+  }
+  
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+  
+  /* Contenido de la carta */
+  #card {
+    text-align: center;
+  }
+  
+  h1 {
+    color: black;
+    font-size: 5em; /* Texto inicial más grande */
+  }
+  
+  #message {
+    font-size: 1.5em;
+    color: black;
+    margin-top: 20px;
+  }
+  
+  /* Elementos flotantes (globos y dinosaurios) */
+  .floating-container {
+    position: absolute;
+    bottom: -150px;
+    animation: float 5s ease-in-out infinite;
+  }
+  
+  .floating-item {
+    width: 80px;
+    height: auto;
+  }
+  
+  /* Animación flotante */
+  @keyframes float {
+    0% {
+      bottom: -150px;
+      transform: translateX(0);
+    }
+    50% {
+      bottom: 100vh;
+      transform: translateX(30px);
+    }
+    100% {
+      bottom: -150px;
+      transform: translateX(-30px);
+    }
+  }
+  
+  /* Confetti */
+  .confetti {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    animation: fall 4s linear infinite;
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+    }
+  }
+  
+  /* Texto inicial */
+  #gift-container p {
+    font-size: 2em;
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    animation: pulse 1.5s infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.5;
+    }
+  }
+  
