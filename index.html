@@ -12,7 +12,7 @@
     <img id="gift" src="regalo.png" alt="Regalo" />
     <p>Haz clic para abrir tu sorpresa 🎁</p>
   </div>
-
+  
   <!-- Contenido de la carta (oculto inicialmente) -->
   <div id="card" style="display: none;">
     <h1>¡Feliz cumple, Christian!</h1>
@@ -20,57 +20,58 @@
       <p>Que todos tus días sean bellos y exitosos.</p>
     </div>
     <audio autoplay loop controls>
-        <source src="cumpleaños.mp3" type="audio/mpeg">
-        Tu navegador no soporta la reproducción de audio.
+      <source src="cumpleaños.mp3" type="audio/mpeg">
+      Tu navegador no soporta la reproducción de audio.
     </audio>
   </div>
+
+  <script>
+    const gift = document.getElementById('gift');
+    const giftContainer = document.getElementById('gift-container');
+    const card = document.getElementById('card');
+
+    // Mostrar la carta y activar globos/Kygo/confetti
+    gift.addEventListener('click', () => {
+      giftContainer.style.display = 'none'; // Ocultar el regalo
+      card.style.display = 'block'; // Mostrar la carta
+
+      // Iniciar globos, Kygo y confetti
+      setInterval(createFloatingBalloonOrKygo, 700);
+      setInterval(createConfetti, 150);
+    });
+
+    // Crear globos o Kygo flotantes
+    function createFloatingBalloonOrKygo() {
+      const isKygo = Math.random() > 0.5; // 50% probabilidad de que sea Kygo o globo
+      const floatingItem = document.createElement('div');
+      floatingItem.classList.add('floating-container');
+      floatingItem.style.left = `${Math.random() * 100}vw`;
+      floatingItem.style.animationDelay = `${Math.random() * 3}s`;
+
+      const itemImage = document.createElement('img');
+      itemImage.src = isKygo ? 'kygo.png' : 'globo.png'; // Imagen de Kygo o globo
+      itemImage.alt = isKygo ? 'Kygo' : 'Globo';
+      itemImage.classList.add('floating-item');
+
+      floatingItem.appendChild(itemImage);
+      document.body.appendChild(floatingItem);
+
+      // Eliminar después de la animación
+      floatingItem.addEventListener('animationiteration', () => floatingItem.remove());
+    }
+
+    // Crear confetti
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = `${Math.random() * 100}vw`;
+      confetti.style.animationDelay = `${Math.random() * 3}s`;
+      confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
+      document.body.appendChild(confetti);
+
+      confetti.addEventListener('animationend', () => confetti.remove());
+    }
+  </script>
 </body>
-<script>
-  const gift = document.getElementById('gift');
-  const giftContainer = document.getElementById('gift-container');
-  const card = document.getElementById('card');
-
-  // Mostrar la carta y activar globos/dinosaurios/confetti
-  gift.addEventListener('click', () => {
-    giftContainer.style.display = 'none'; // Ocultar el regalo
-    card.style.display = 'block'; // Mostrar la carta
-
-    // Iniciar globos, dinosaurios y confetti
-    setInterval(createFloatingBalloonOrDinosaur, 700);
-    setInterval(createConfetti, 150);
-  });
-
-  // Crear globos o dinosaurios flotantes
-  function createFloatingBalloonOrDinosaur() {
-    const isDinosaur = Math.random() > 0.5; // 50% probabilidad de que sea dinosaurio o globo
-    const floatingItem = document.createElement('div');
-    floatingItem.classList.add('floating-container');
-    floatingItem.style.left = `${Math.random() * 100}vw`;
-    floatingItem.style.animationDelay = `${Math.random() * 3}s`;
-
-    const itemImage = document.createElement('img');
-    itemImage.src = isDinosaur ? 'dinosaurio.png' : 'globo.png'; // Imagen de dinosaurio o globo
-    itemImage.alt = isDinosaur ? 'Dinosaurio' : 'Globo';
-    itemImage.classList.add('floating-item');
-
-    floatingItem.appendChild(itemImage);
-    document.body.appendChild(floatingItem);
-
-    // Eliminar después de la animación
-    floatingItem.addEventListener('animationiteration', () => floatingItem.remove());
-  }
-
-  // Crear confetti
-  function createConfetti() {
-    const confetti = document.createElement('div');
-    confetti.classList.add('confetti');
-    confetti.style.left = `${Math.random() * 100}vw`;
-    confetti.style.animationDelay = `${Math.random() * 3}s`;
-    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 70%, 60%)`;
-    document.body.appendChild(confetti);
-
-    confetti.addEventListener('animationend', () => confetti.remove());
-  }
-</script>
 </html>
 
